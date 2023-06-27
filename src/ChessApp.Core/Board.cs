@@ -6,10 +6,9 @@ using System;
 
 namespace Chess
 {
-    class Board {
+    class Board : IPlayerObserver {
         
-        private string[,] board = new string[8,8]; // 8x8 board
-
+        private Piece[,] board = new Piece[8,8]; // 8x8 board of Pieces
 
         public Board() {
             // Create a new board
@@ -26,7 +25,7 @@ namespace Chess
             // Set the board to empty
             for (int i = 0; i < 8; i++) {
                 for (int j = 0; j < 8; j++) {
-                    board[i,j] = " ";
+                    board[i,j] = null;
                 }
             }
         }
@@ -34,40 +33,43 @@ namespace Chess
         public void SetBoard() {
             // Set the board
             Console.WriteLine("Setting the board");
+
+            // Create a chess piece factory
+            ChessPieceFactory pieceFactory = new ChessPieceFactory();
             
             // Set the board
-            board[0,0] = "R";
-            board[0,1] = "N";
-            board[0,2] = "B";
-            board[0,3] = "Q";
-            board[0,4] = "K";
-            board[0,5] = "B";
-            board[0,6] = "N";
-            board[0,7] = "R";
-            board[1,0] = "P";
-            board[1,1] = "P";
-            board[1,2] = "P";
-            board[1,3] = "P";
-            board[1,4] = "P";
-            board[1,5] = "P";
-            board[1,6] = "P";
-            board[1,7] = "P";
-            board[6,0] = "p";
-            board[6,1] = "p";
-            board[6,2] = "p";
-            board[6,3] = "p";
-            board[6,4] = "p";
-            board[6,5] = "p";
-            board[6,6] = "p";
-            board[6,7] = "p";
-            board[7,0] = "r";
-            board[7,1] = "n";
-            board[7,2] = "b";
-            board[7,3] = "q";
-            board[7,4] = "k";
-            board[7,5] = "b";
-            board[7,6] = "n";
-            board[7,7] = "r";
+            board[0,0] = pieceFactory.CreatePiece("Rook");
+            board[0,1] = pieceFactory.CreatePiece("Knight");
+            board[0,2] = pieceFactory.CreatePiece("Bishop");
+            board[0,3] = pieceFactory.CreatePiece("Queen");
+            board[0,4] = pieceFactory.CreatePiece("King");
+            board[0,5] = pieceFactory.CreatePiece("Bishop");
+            board[0,6] = pieceFactory.CreatePiece("Knight");
+            board[0,7] = pieceFactory.CreatePiece("Rook");
+            board[1,0] = pieceFactory.CreatePiece("Pawn");
+            board[1,1] = pieceFactory.CreatePiece("Pawn");
+            board[1,2] = pieceFactory.CreatePiece("Pawn");
+            board[1,3] = pieceFactory.CreatePiece("Pawn");
+            board[1,4] = pieceFactory.CreatePiece("Pawn");
+            board[1,5] = pieceFactory.CreatePiece("Pawn");
+            board[1,6] = pieceFactory.CreatePiece("Pawn");
+            board[1,7] = pieceFactory.CreatePiece("Pawn");
+            board[6,0] = pieceFactory.CreatePiece("Pawn");
+            board[6,1] = pieceFactory.CreatePiece("Pawn");
+            board[6,2] = pieceFactory.CreatePiece("Pawn");
+            board[6,3] = pieceFactory.CreatePiece("Pawn");
+            board[6,4] = pieceFactory.CreatePiece("Pawn");
+            board[6,5] = pieceFactory.CreatePiece("Pawn");
+            board[6,6] = pieceFactory.CreatePiece("Pawn");
+            board[6,7] = pieceFactory.CreatePiece("Pawn");
+            board[7,0] = pieceFactory.CreatePiece("Rook");
+            board[7,1] = pieceFactory.CreatePiece("Knight");
+            board[7,2] = pieceFactory.CreatePiece("Bishop");
+            board[7,3] = pieceFactory.CreatePiece("Queen");
+            board[7,4] = pieceFactory.CreatePiece("King");
+            board[7,5] = pieceFactory.CreatePiece("Bishop");
+            board[7,6] = pieceFactory.CreatePiece("Knight");
+            board[7,7] = pieceFactory.CreatePiece("Rook");
         }
 
         public void PrintBoard() {
@@ -80,7 +82,10 @@ namespace Chess
             }
         }
 
-
-
+        public void OnPlayerMove(Player player, Piece piece, int startX, int startY, int endX, int endY) {
+            // Update the chessboard state based on the player's move
+            Console.WriteLine("Updating the chessboard state based on the player's move");
+        }
+       
     }
 }

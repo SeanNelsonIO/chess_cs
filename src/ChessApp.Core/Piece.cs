@@ -41,7 +41,7 @@ namespace Chess
         }
     }
     
-    public class Rooke : Piece {
+    public class Rook : Piece {
         private int x;
         private int y;
 
@@ -52,7 +52,6 @@ namespace Chess
             {
                 return false;
             }
-
             return true;
         }
     }

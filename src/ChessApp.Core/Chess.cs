@@ -9,18 +9,32 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            // Create a new chess board
-            Board board = new Board();
+            
+            Game game = Game.GetInstance();
 
-            board.SetBoard();
+            // Display menu
+            // game.DisplayMenu();
+            
+            // Start the game loop
+            while (!game.IsGameOver)
+            {
+                // Process player input, update game state, and handle game logic
+                game.Update();
 
-            board.PrintBoard();
+                // Render the current game state
+                game.Render();
 
-            // Create a new game
-            // Game game = new Game(board);
+                // Delay to control the frame rate (optional)
+                // You can use Thread.Sleep() or other mechanisms for this purpose
 
-            // // Start the game
-            // game.Start();
+                // Clear the console or UI (optional)
+                // You may want to clear the screen or update the UI between frames
+                
+            }
+
+            // Game over, display the result
+            // game.DisplayResult();
+
         }
     }
 }
