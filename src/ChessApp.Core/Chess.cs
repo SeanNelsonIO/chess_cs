@@ -3,8 +3,6 @@
 
 using System;
 
-
-
 namespace Chess
 {
     class Chess
@@ -14,11 +12,15 @@ namespace Chess
             // Create a new chess board
             Board board = new Board();
 
-            // Create a new game
-            Game game = new Game(board);
+            board.SetBoard();
 
-            // Start the game
-            game.Start();
+            board.PrintBoard();
+
+            // Create a new game
+            // Game game = new Game(board);
+
+            // // Start the game
+            // game.Start();
         }
     }
 }
